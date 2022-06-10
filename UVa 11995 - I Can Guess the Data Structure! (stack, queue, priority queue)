@@ -1,0 +1,66 @@
+#include <iostream>
+#include <stack>
+#include <queue>
+using namespace std;
+int main(void){
+	int sss,qqq,ppp;
+	int first,second;
+	int n;
+	while(cin >> n){
+		stack<int> s;
+		queue<int> q;
+		priority_queue<int> p;
+		sss=1;
+		ppp=1;
+		qqq=1;
+		for(int i =0;i<n ; i++){
+			cin >> first >> second;
+			if (first == 1){
+				s.push(second);
+				q.push(second);
+				p.push(second);
+			}
+			if (first == 2){
+				if(s.empty()) sss=0;
+				if(q.empty()) qqq=0;
+				if(p.empty()) ppp=0;
+				if(sss){
+				if(s.top()!=second){
+						sss=0;
+					}
+					else{
+						s.pop();
+					}
+				}
+				if(qqq){
+					if(q.front()!=second){
+						qqq=0;
+					}
+					else{
+						q.pop();
+					}
+				}
+				if(ppp){
+					if(p.top()!=second){
+						ppp=0;
+					}
+					else{
+						p.pop();
+					}
+				}
+			}
+			
+		  }
+	if (sss+ppp+qqq>1){      
+      cout << "not sure"<<endl;   
+    }else if (sss){
+      cout << "stack"<<endl;   
+    }else if (qqq){
+      cout << "queue"<<endl;   
+    }else if (ppp){
+      cout << "priority queue"<<endl;   
+    }else {
+      cout << "impossible"<<endl;    
+    }
+		}
+	}
